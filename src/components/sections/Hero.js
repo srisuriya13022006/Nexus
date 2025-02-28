@@ -1,19 +1,48 @@
 import React from "react";
+import { motion } from "framer-motion";
+import heroImage from "../../assets/logo.png"; // Replace with your actual image
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white">
-      <div className="text-center px-6">
-        <h1 className="text-5xl font-bold animate-fade-in">Nexus Edge Technologies</h1>
-        <p className="text-lg mt-4 font-light tracking-wide">
-          Where Innovation Meets the Cutting Edge
-        </p>
-        <a href="#services">
-          <button className="mt-6 px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-lg font-semibold shadow-lg transition-all duration-300">
-            Explore Services
-          </button>
-        </a>
-      </div>
+    <section id="hero" className="h-screen flex flex-col items-center justify-center text-center bg-gray-900 text-white">
+      {/* Text Animation */}
+      <motion.h1 
+        className="text-5xl font-bold text-accent mb-4"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        Welcome to Nexus Edge Technologies
+      </motion.h1>
+
+      <motion.p 
+        className="text-lg text-gray-300 mb-6"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        Innovating the Future with AI & Web Development
+      </motion.p>
+
+      {/* Image Animation */}
+      <motion.img 
+        src={heroImage} 
+        alt="Hero"
+        className="rounded-full w-48 h-48 shadow-lg"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+      />
+
+      {/* Know About us Button */}
+      <motion.a 
+        href="#about"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="mt-6 px-6 py-3 bg-accent text-white font-bold rounded-lg shadow-md transition"
+      >
+        Know About Us
+      </motion.a>
     </section>
   );
 };
