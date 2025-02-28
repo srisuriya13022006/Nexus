@@ -27,6 +27,7 @@ const About = () => {
             Our goal is to <strong>empower businesses with cutting-edge technology</strong>,
             creating seamless user experiences and intelligent automation.
           </p>
+          <p><strong>Feel free to reach out for projects</strong></p>
           <a href="#contact">
             <button className="mt-6 px-6 py-3 bg-accent text-white font-bold rounded-lg shadow-md hover:scale-105 transition">
               Contact Us
