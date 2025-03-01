@@ -1,22 +1,21 @@
 import React from "react";
-import aboutImage from "../../assets/aboutimg.jpg"; 
-
+import aboutImage from "../../assets/aboutimg.jpg";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-gray-900 text-white">
-      <div className="container mx-auto flex flex-col md:flex-row items-center px-10">
+    <section id="about" className="py-20 bg-gray-900 text-white overflow-hidden">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center px-6 md:px-10">
         {/* Image Section */}
-        <div data-aos="fade-up"className="md:w-1/2">
+        <div data-aos="fade-up" className="md:w-1/2 flex justify-center">
           <img
-            src={aboutImage} 
+            src={aboutImage}
             alt="About Us"
-            className="rounded-lg shadow-lg w-full md:w-10/12 mx-auto"
+            className="rounded-lg shadow-lg w-full max-w-md"
           />
         </div>
 
         {/* Text Section */}
-        <div data-aos="fade-left"className="md:w-1/2 mt-10 md:mt-0 md:pl-10">
+        <div data-aos="fade-left" className="md:w-1/2 mt-10 md:mt-0 md:pl-10">
           <h2 className="text-4xl font-bold text-accent mb-4">About Us</h2>
           <p className="text-lg text-gray-300 leading-relaxed">
             Welcome to <strong>Nexus Edge Technologies</strong>. We specialize in{" "}

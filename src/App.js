@@ -14,10 +14,10 @@ function App() {
     AOS.init({ duration: 1000 }); // Animation duration 1 sec
   }, []);
   return (
-    <div>
+    <div className="overflow-x-hidden w-screen">
       <Navbar />
       <Hero />
-      <About />
+      <About /> 
       <Services />
       <Contact />
       <Footer />
