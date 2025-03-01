@@ -21,7 +21,7 @@ const Hero = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        Innovating the Future with AI & Web Development
+        Where Innovation Meets the Cutting Edge.
       </motion.p>
 
       {/* Image Animation */}

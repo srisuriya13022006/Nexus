@@ -13,7 +13,7 @@ const Services = () => {
         <h2 className="text-4xl font-bold text-accent">Our Services</h2>
         <p className="text-lg mt-3">We provide top-notch tech solutions</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-10">
+      <div  data-aos="zoom-out"className="grid grid-cols-1 md:grid-cols-3 gap-8 px-10">
         {services.map((service, index) => (
           <div key={index} className="p-6 bg-primary rounded-lg shadow-lg transform transition hover:scale-105">
             <div className="text-4xl">{service.icon}</div>

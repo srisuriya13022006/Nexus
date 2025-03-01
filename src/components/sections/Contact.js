@@ -3,10 +3,33 @@ import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const form = useRef();
+  const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [error, setError] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    // Validate form fields
+    const formData = new FormData(form.current);
+    const name = formData.get("user_name");
+    const email = formData.get("user_email");
+    const phone = formData.get("user_phone");
+    const message = formData.get("message");
+
+    if (!name || !email || !phone || !message) {
+      setError("⚠️ Please fill out all fields.");
+      return;
+    }
+
+    // Validate phone number (10 digits only)
+    if (!/^\d{10}$/.test(phone)) {
+      setError("⚠️ Please enter a valid 10-digit phone number.");
+      return;
+    }
+
+    setIsSending(true);
+    setError("");
 
     emailjs
       .sendForm(
@@ -16,19 +39,18 @@ const Contact = () => {
         "aKR7bmwGJAfMUtiiQ" // Your Public Key
       )
       .then(
-        (result) => {
-          console.log("Success:", result.text);
+        () => {
+          setIsSending(false);
           setIsSent(true);
-          alert("✅ Your message has been sent successfully!");
-          setTimeout(() => setIsSent(false), 3000); // Reset after 3 sec
+          setTimeout(() => setIsSent(false), 3000);
         },
-        (error) => {
-          console.log("Failed:", error.text);
-          alert("❌ Failed to send message. Please try again.");
+        () => {
+          setIsSending(false);
+          setError("❌ Failed to send message. Please try again.");
         }
       );
 
-    e.target.reset(); // Reset form fields
+    e.target.reset(); // Reset form
   };
 
   return (
@@ -71,7 +93,7 @@ const Contact = () => {
             name="user_phone"
             className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-accent"
             required
-            pattern="[0-9]{10}" // Ensures a 10-digit phone number
+            pattern="[0-9]{10}"
             placeholder="Enter your phone number"
           />
         </div>
@@ -87,18 +109,23 @@ const Contact = () => {
           />
         </div>
 
+        {/* Error Message */}
+        {error && <p className="text-red-400 text-center mb-4">{error}</p>}
+
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full px-6 py-3 bg-accent text-white font-bold rounded-lg shadow-md hover:scale-105 transition"
+          className="w-full px-6 py-3 bg-accent text-white font-bold rounded-lg shadow-md hover:scale-105 transition flex justify-center items-center"
         >
-          Send Message
+          {isSending ? (
+            <span className="loader"></span> // Loading spinner
+          ) : (
+            "Send Message"
+          )}
         </button>
 
         {/* Success Message */}
-        {isSent && (
-          <p className="text-green-400 text-center mt-4">Message sent successfully!</p>
-        )}
+        {isSent && <p className="text-green-400 text-center mt-4">✅ Message sent successfully!</p>}
       </form>
 
       {/* Contact Details */}
