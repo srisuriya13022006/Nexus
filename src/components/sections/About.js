@@ -1,5 +1,5 @@
 import React from "react";
-import aboutImage from "../../assets/aboutimg.jpg"; // ✅ Correct relative path
+import aboutImage from "../../assets/aboutimg.jpg"; 
 
 
 const About = () => {
@@ -9,7 +9,7 @@ const About = () => {
         {/* Image Section */}
         <div className="md:w-1/2">
           <img
-            src={aboutImage} // ✅ Use imported image
+            src={aboutImage} 
             alt="About Us"
             className="rounded-lg shadow-lg w-full md:w-10/12 mx-auto"
           />
